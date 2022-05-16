@@ -8,7 +8,7 @@ import re
 import website_manager as wm
 import file_manager as fm
 
-
+# Unused. Refer to notebook.
 def tokenize(raw_text: str) -> list:
 	"""
 	Takes raw strings, sterilazes text, uses lemmatization, tokenizes words, and returns tokens in a sorted list.
@@ -43,7 +43,8 @@ if __name__ == '__main__':
 		# Comment out for safety and sanity while debugging.
 		"javascript",
 		"python",
-		
+		"github",
+		"cpp"
 	]
 
 	# Links to blog posts (also used in file naming)
@@ -61,7 +62,7 @@ if __name__ == '__main__':
 			# fm.save("raw_" + url, data= raw) # Optional.
 			data_block[fm.clean_up_name(url)] = {
 				"tag": tag,
-				"tokens": tokenize(raw)
+				"raw": raw
 			}
 
 		# Update link list

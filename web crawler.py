@@ -1,32 +1,7 @@
-# External Libraries
-import nltk
-
-# Built-in Libraries
-import re
-
 # User Libraries
 import website_manager as wm
 import file_manager as fm
 
-# Unused. Refer to notebook.
-def tokenize(raw_text: str) -> list:
-	"""
-	Takes raw strings, sterilazes text, uses lemmatization, tokenizes words, and returns tokens in a sorted list.
-	"""
-	no_space_text = " ".join(raw_text.split())  # Remove extra spaces
-	no_punctuation_text = re.sub("[^0-9A-Za-z ]", "", no_space_text)  # Remove punctuation
-	pure_text = "".join([i.lower() for i in no_punctuation_text])  #   To lower
-
-	# Tokenize and remove stop words
-	tokens = nltk.tokenize.word_tokenize(pure_text)
-	stop_words = nltk.corpus.stopwords.words("english")
-	tokens = [token for token in tokens if token not in stop_words]
-
-	# Lemmatize and sort
-	lemm = nltk.stem.WordNetLemmatizer()
-	tokens = [lemm.lemmatize(token) for token in tokens]
-	tokens.sort()
-	return tokens
 
 def stats()-> None:
 	all_links = fm.get("_all_links")
